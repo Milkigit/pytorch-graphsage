@@ -20,7 +20,8 @@ def set_seeds(seed=0):
 
 def to_numpy(x):
     if isinstance(x, Variable):
-        return to_numpy(x.data)
+        return x.data.numpy()
+        # return to_numpy(x.data)
     
     return x.cpu().numpy() if x.is_cuda else x.numpy()
 

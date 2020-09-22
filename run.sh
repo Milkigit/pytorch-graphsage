@@ -5,7 +5,7 @@
 # --
 # Small
 
-time ./train.py \
+time python ./train.py \
     --problem-path ./data/reddit/problem.h5 \
     --aggregator-class mean
 

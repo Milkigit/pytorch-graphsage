@@ -76,7 +76,9 @@ class GSSupervised(nn.Module):
         tmp_feats = feats[ids] if has_feats else None
         all_feats = [self.prep(ids, tmp_feats, layer_idx=0)]
         for layer_idx, sampler_fn in enumerate(sample_fns):
-            ids = sampler_fn(ids=ids).contiguous().view(-1)
+            temp = sampler_fn(ids=ids)
+            temp1 = temp.contiguous()
+            ids = temp1.view(-1)
             tmp_feats = feats[ids] if has_feats else None
             all_feats.append(self.prep(ids, tmp_feats, layer_idx=layer_idx + 1))
         
